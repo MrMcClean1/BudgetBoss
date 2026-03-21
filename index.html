@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+   ______                            __
+  / ____/___  ____ ___  ____  __  __/ /____  _____
+ / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
+\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
+                    /_/
+        Created with Perplexity Computer
+        https://www.perplexity.ai/computer
+-->
+
+<!-- Perplexity Computer Attribution — SEO Meta Tags -->
+<meta name="generator" content="Perplexity Computer">
+<meta name="author" content="Perplexity Computer">
+<meta property="og:see_also" content="https://www.perplexity.ai/computer">
+<link rel="author" href="https://www.perplexity.ai/computer">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alex McClellan — Tech, Philosophy & the Future</title>
+<meta name="description" content="Writing about AI, automation, philosophy, futurism, and whatever else is on my mind. Built by Alex McClellan.">
+<meta property="og:title" content="Alex McClellan — Tech, Philosophy & the Future">
+<meta property="og:description" content="Writing about AI, automation, philosophy, futurism, and whatever else is on my mind.">
+<meta property="og:type" content="website">
+
+<!-- Fonts -->
+<link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="./base.css">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER (shared)
+     ============================================================ -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#home" data-page="home" class="site-logo">
+      <!-- SVG Logo: "AM" monogram — geometric, minimal -->
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Alex McClellan logo">
+        <rect width="32" height="32" rx="6" fill="currentColor"/>
+        <path d="M8 24L13.5 8H18.5L24 24H20.8L19.6 20H12.4L11.2 24H8ZM13.2 17.4H18.8L16 9.8L13.2 17.4Z" fill="var(--color-bg)"/>
+      </svg>
+      <span>Alex McClellan</span>
+    </a>
+
+    <nav>
+      <ul class="nav-links" role="list">
+        <li><a href="#home" data-page="home" class="active">Blog</a></li>
+        <li><a href="#archive" data-page="archive">Archive</a></li>
+        <li><a href="#about" data-page="about">About</a></li>
+        <li>
+          <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+    <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- ============================================================
+     PAGE: HOME
+     ============================================================ -->
+<div id="home" class="page">
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-content reveal">
+        <h1>Tech, thoughts,<br>and <span class="hero-accent">the future</span>.</h1>
+        <p>Writing about AI, automation, philosophy, futurism, and whatever else I'm thinking about. Shipping code, automating everything, and overthinking the rest.</p>
+        <div class="beehiiv-form-wrapper">
+          <iframe src="https://subscribe-forms.beehiiv.com/c6139a60-b975-4c4c-bf54-596d50d8b24e" class="beehiiv-embed" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width:100%;max-width:480px;height:140px;border:none;background:transparent;"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Category pills -->
+    <div class="categories reveal">
+      <a href="#" class="category-pill active" onclick="return false;">All</a>
+      <a href="#" class="category-pill" onclick="return false;">AI & LLMs</a>
+      <a href="#" class="category-pill" onclick="return false;">Automation</a>
+      <a href="#" class="category-pill" onclick="return false;">Philosophy</a>
+      <a href="#" class="category-pill" onclick="return false;">Futurism</a>
+      <a href="#" class="category-pill" onclick="return false;">Trading</a>
+      <a href="#" class="category-pill" onclick="return false;">Tutorials</a>
+      <a href="#" class="category-pill" onclick="return false;">Random</a>
+    </div>
+
+    <!-- Featured Posts -->
+    <section class="posts-section">
+      <div class="section-header reveal">
+        <h2 class="section-title">Featured</h2>
+        <a href="#archive" data-page="archive" class="section-link">View all posts &rarr;</a>
+      </div>
+
+      <div class="featured-grid reveal">
+        <!-- Big featured card -->
+        <article class="post-card featured" data-page="post-1" style="cursor:pointer;" onclick="window.location.hash='post-1'">
+          <div class="post-card-image" style="background: linear-gradient(135deg, var(--color-primary-light), var(--color-surface-2)); display:flex; align-items:center; justify-content:center;">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="post-card-body">
+            <div class="post-card-meta">
+              <span class="post-card-category">AI & LLMs</span>
+              <span class="post-card-date">Mar 14, 2026</span>
+            </div>
+            <h3 class="post-card-title"><a href="#post-1" data-page="post-1">Running Qwen3 30B Locally: A Practical Guide for AMD GPUs</a></h3>
+            <p class="post-card-excerpt">How I got a 30-billion parameter model running on a consumer RX 7900 XT with Ollama and ROCm. Setup, benchmarks, and real-world performance for content generation.</p>
+          </div>
+        </article>
+
+        <!-- Side stack -->
+        <div class="featured-side">
+          <article class="post-card" data-page="post-2" style="cursor:pointer;" onclick="window.location.hash='post-2'">
+            <div class="post-card-image" style="background: linear-gradient(135deg, var(--color-surface-offset), var(--color-surface-2)); display:flex; align-items:center; justify-content:center;">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" style="opacity:0.4"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <div class="post-card-body">
+              <div class="post-card-meta">
+                <span class="post-card-category">Automation</span>
+                <span class="post-card-date">Mar 12, 2026</span>
+              </div>
+              <h3 class="post-card-title"><a href="#post-2" data-page="post-2">Automated Content Pipelines with OpenClaw and Local AI</a></h3>
+              <p class="post-card-excerpt">Building a zero-cost content factory that writes, optimizes, and publishes blog posts on autopilot using local LLMs.</p>
+            </div>
+          </article>
+
+          <article class="post-card" style="cursor:pointer;">
+            <div class="post-card-image" style="background: linear-gradient(135deg, var(--color-surface-2), var(--color-surface-offset)); display:flex; align-items:center; justify-content:center;">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" style="opacity:0.4"><polyline points="22,7 13.5,15.5 8.5,10.5 2,17"/><polyline points="16,7 22,7 22,13"/></svg>
+            </div>
+            <div class="post-card-body">
+              <div class="post-card-meta">
+                <span class="post-card-category">Trading</span>
+                <span class="post-card-date">Mar 10, 2026</span>
+              </div>
+              <h3 class="post-card-title"><a href="#">Copy-Trading Bots on Polymarket: Architecture and Lessons</a></h3>
+              <p class="post-card-excerpt">Tracking high-win-rate wallets and automating trades with Python. What worked, what didn't, and the system design behind it.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- Recent posts -->
+      <div class="section-header reveal">
+        <h2 class="section-title">Recent</h2>
+      </div>
+      <div class="posts-grid reveal">
+        <article class="post-card" data-page="post-budgetboss" style="cursor:pointer;" onclick="window.location.hash='post-budgetboss'">
+          <div class="post-card-image" style="background: linear-gradient(135deg, #e6f4ea, #d4edda); display:flex; align-items:center; justify-content:center;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" style="opacity:0.4"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div class="post-card-body">
+            <div class="post-card-meta">
+              <span class="post-card-category">Automation</span>
+              <span class="post-card-date">Mar 17, 2026</span>
+            </div>
+            <h3 class="post-card-title"><a href="#post-budgetboss" data-page="post-budgetboss">I Built a Gamified Budgeting App Because Spreadsheets Weren't Cutting It</a></h3>
+            <p class="post-card-excerpt">Streaks, XP, badges, and compound growth projections — how I turned personal finance into a game I actually want to play.</p>
+          </div>
+        </article>
+
+        <article class="post-card" data-page="post-philosophy" style="cursor:pointer;" onclick="window.location.hash='post-philosophy'">
+          <div class="post-card-image" style="background: linear-gradient(135deg, #f0ede6, #e8e4db); display:flex; align-items:center; justify-content:center;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" style="opacity:0.4"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          </div>
+          <div class="post-card-body">
+            <div class="post-card-meta">
+              <span class="post-card-category">Philosophy</span>
+              <span class="post-card-date">Mar 9, 2026</span>
+            </div>
+            <h3 class="post-card-title"><a href="#post-philosophy" data-page="post-philosophy">The Automation Paradox: When Machines Free Your Time, What Do You Do With It?</a></h3>
+            <p class="post-card-excerpt">I automated most of my income. Then I had to confront the question that productivity culture never answers: what's the point?</p>
+          </div>
+        </article>
+
+        <article class="post-card" data-page="post-futurism" style="cursor:pointer;" onclick="window.location.hash='post-futurism'">
+          <div class="post-card-image" style="background: linear-gradient(135deg, #e6ecf5, #dce3f0); display:flex; align-items:center; justify-content:center;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" style="opacity:0.4"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <div class="post-card-body">
+            <div class="post-card-meta">
+              <span class="post-card-category">Futurism</span>
+              <span class="post-card-date">Mar 7, 2026</span>
+            </div>
+            <h3 class="post-card-title"><a href="#post-futurism" data-page="post-futurism">The One-Person Company Is the Future of Business</a></h3>
+            <p class="post-card-excerpt">AI agents, automated pipelines, and zero employees. We're entering an era where one person can run what used to require a team of 50.</p>
+          </div>
+        </article>
+
+        <article class="post-card" data-page="post-random" style="cursor:pointer;" onclick="window.location.hash='post-random'">
+          <div class="post-card-image" style="background: linear-gradient(135deg, var(--color-surface-2), var(--color-surface-offset)); display:flex; align-items:center; justify-content:center;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" style="opacity:0.4"><path d="M12 20h9M12 4h9M3 12h18M3 4l4 4-4 4"/></svg>
+          </div>
+          <div class="post-card-body">
+            <div class="post-card-meta">
+              <span class="post-card-category">Random</span>
+              <span class="post-card-date">Mar 6, 2026</span>
+            </div>
+            <h3 class="post-card-title"><a href="#post-random" data-page="post-random">Things I Changed My Mind About in 2025</a></h3>
+            <p class="post-card-excerpt">Crypto, remote work, social media, morning routines, and a few other positions I've completely reversed on.</p>
+          </div>
+        </article>
+      </div>
+
+      <!-- More posts -->
+      <div class="posts-grid reveal" style="margin-top: var(--space-6);">
+        <article class="post-card">
+          <div class="post-card-image" style="background: linear-gradient(135deg, var(--color-surface-2), var(--color-surface)); display:flex; align-items:center; justify-content:center;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" style="opacity:0.4"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <div class="post-card-body">
+            <div class="post-card-meta">
+              <span class="post-card-category">Tutorials</span>
+              <span class="post-card-date">Mar 5, 2026</span>
+            </div>
+            <h3 class="post-card-title"><a href="#">Setting Up a Hybrid AI Video Pipeline for Under $40/Month</a></h3>
+            <p class="post-card-excerpt">Combining local Stable Diffusion XL with free cloud video APIs to produce automated short-form content at near-zero cost.</p>
+          </div>
+        </article>
+
+        <article class="post-card">
+          <div class="post-card-image" style="background: linear-gradient(135deg, var(--color-surface-2), var(--color-primary-light)); display:flex; align-items:center; justify-content:center;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" style="opacity:0.4"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          </div>
+          <div class="post-card-body">
+            <div class="post-card-meta">
+              <span class="post-card-category">AI & LLMs</span>
+              <span class="post-card-date">Mar 2, 2026</span>
+            </div>
+            <h3 class="post-card-title"><a href="#">Why I Run AI Models Locally Instead of Using Cloud APIs</a></h3>
+            <p class="post-card-excerpt">The real cost comparison between Ollama on consumer hardware vs. OpenAI, Anthropic, and Replicate. Spoiler: local wins for most workflows.</p>
+          </div>
+        </article>
+
+        <article class="post-card">
+          <div class="post-card-image" style="background: linear-gradient(135deg, var(--color-surface-offset), var(--color-surface-2)); display:flex; align-items:center; justify-content:center;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" style="opacity:0.4"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div class="post-card-body">
+            <div class="post-card-meta">
+              <span class="post-card-category">Hardware</span>
+              <span class="post-card-date">Feb 28, 2026</span>
+            </div>
+            <h3 class="post-card-title"><a href="#">Silencing the AW3423DWF: Software Fix for OLED Coil Whine</a></h3>
+            <p class="post-card-excerpt">A custom Python tool that monitors and adjusts monitor settings to eliminate the characteristic high-pitched whine from Dell's OLED panel.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Newsletter CTA -->
+    <section class="newsletter-section reveal">
+      <div class="newsletter-box">
+        <h2>Stay in the loop</h2>
+        <p>Weekly notes on tech, philosophy, futurism, and whatever else I'm building or thinking about. No spam, unsubscribe anytime.</p>
+        <div class="beehiiv-form-wrapper">
+          <iframe src="https://subscribe-forms.beehiiv.com/c6139a60-b975-4c4c-bf54-596d50d8b24e" class="beehiiv-embed" data-test-id="beehiiv-embed" frameborder="0" scrolling="no" style="width:100%;max-width:480px;height:140px;border:none;background:transparent;"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- ============================================================
+     PAGE: POST (sample article)
+     ============================================================ -->
+<div id="post-1" class="page" style="display:none;">
+  <main>
+    <article>
+      <div class="article-header">
+        <div class="post-card-meta">
+          <span class="post-card-category">AI & LLMs</span>
+          <span class="post-card-date">Mar 14, 2026</span>
+          <span class="post-card-date">&middot; 8 min read</span>
+        </div>
+        <h1>Running Qwen3 30B Locally: A Practical Guide for AMD GPUs</h1>
+        <p class="article-subtitle">How I got a 30-billion parameter model running on a consumer RX 7900 XT with Ollama and ROCm. Setup, benchmarks, and real-world performance for content generation.</p>
+      </div>
+
+      <div class="article-content">
+        <h2>Why Local LLMs?</h2>
+        <p>Cloud APIs charge per token. When you're running an automated content pipeline that generates 10+ articles per day, those costs add up fast. At ~$0.03 per 1K output tokens on GPT-4, a single 2000-word article costs roughly $0.40. That's $4/day, $120/month — just for text generation.</p>
+        <p>A local model running on hardware you already own? $0/month after the electricity bill. And for content generation, the quality difference between Qwen3 30B and GPT-4 is negligible for structured blog content.</p>
+
+        <h2>Hardware Requirements</h2>
+        <p>The Qwen3 30B MoE (Mixture of Experts) model in Q4_K_M quantization needs approximately 18GB of VRAM. Here's what I'm running:</p>
+        <ul>
+          <li><strong>GPU:</strong> AMD Radeon RX 7900 XT (20GB VRAM)</li>
+          <li><strong>CPU:</strong> AMD Ryzen 9 7900X</li>
+          <li><strong>RAM:</strong> 32GB DDR5</li>
+          <li><strong>OS:</strong> Windows 11</li>
+        </ul>
+        <p>The 20GB of VRAM on the 7900 XT is the key factor. The model fills most of it (~18GB), leaving just enough headroom for the inference engine overhead.</p>
+
+        <h2>Setup with Ollama</h2>
+        <p>Ollama auto-detects the RX 7900 XT via ROCm on Windows. No extra GPU driver configuration needed.</p>
+        <pre><code># Install Ollama (Windows)
+# Download from https://ollama.ai
+
+# Pull the quantized model
+ollama pull qwen3:30b-a3b-q4_K_M
+
+# Test it
+ollama run qwen3:30b-a3b-q4_K_M "Write a one-paragraph summary of transformer architecture"</code></pre>
+
+        <h2>Performance Benchmarks</h2>
+        <p>On my RX 7900 XT, the 30B MoE model produces tokens at approximately 20-40 tokens per second. For context, a 2000-word blog post (~2700 tokens) generates in about 70-135 seconds. That's fast enough for automated pipelines where latency isn't critical.</p>
+        <p>Compared to the smaller 4B model running on my secondary Lubuntu system (i7-3820 + GTX 1060 6GB), the 30B model produces noticeably better structured content, especially for technical writing that requires accurate terminology and logical flow.</p>
+
+        <h2>Integration with OpenClaw</h2>
+        <p>The real power comes from connecting Ollama to an agent framework. I use OpenClaw as the orchestration layer — it schedules content generation tasks, manages the writing pipeline (drafting → SEO optimization → publishing), and communicates through Discord.</p>
+        <p>The configuration is straightforward: point OpenClaw at your Ollama endpoint, define your skills (blog writer, SEO optimizer, content repurposer), and set a cron schedule. The machine writes while you sleep.</p>
+
+        <blockquote>The best automation is the kind you forget is running — until you check your analytics and see traffic growing from content you didn't manually write.</blockquote>
+
+        <h2>Tips and Gotchas</h2>
+        <ul>
+          <li>Keep concurrency at 1 agent / 2 sub-agents with the 30B model. Going higher will cause OOM errors.</li>
+          <li>The 14B model makes a good fallback if the 30B fails to load.</li>
+          <li>Monitor VRAM usage with <code>rocm-smi</code> or Task Manager. If you're consistently above 19GB, drop to the 14B.</li>
+          <li>For the Lubuntu secondary system, stick with the 4B quantization. It fits comfortably in 6GB VRAM.</li>
+        </ul>
+
+        <h2>What's Next</h2>
+        <p>I'm working on adding a hybrid video generation pipeline to the same system. The 7900 XT can run ComfyUI with Stable Diffusion XL for image generation, while cloud APIs handle the image-to-video step. More on that in a future post.</p>
+      </div>
+    </article>
+
+    <!-- Related Posts -->
+    <section class="related-posts">
+      <div class="section-header">
+        <h2 class="section-title">Related Posts</h2>
+      </div>
+      <div class="posts-grid" style="max-width: var(--content-default);">
+        <article class="post-card" data-page="post-2" style="cursor:pointer;" onclick="window.location.hash='post-2'">
+          <div class="post-card-body">
+            <div class="post-card-meta">
+              <span class="post-card-category">Automation</span>
+              <span class="post-card-date">Mar 12, 2026</span>
+            </div>
+            <h3 class="post-card-title"><a href="#post-2" data-page="post-2">Automated Content Pipelines with OpenClaw and Local AI</a></h3>
+            <p class="post-card-excerpt">Building a zero-cost content factory that writes, optimizes, and publishes blog posts on autopilot.</p>
+          </div>
+        </article>
+        <article class="post-card">
+          <div class="post-card-body">
+            <div class="post-card-meta">
+              <span class="post-card-category">AI & LLMs</span>
+              <span class="post-card-date">Mar 2, 2026</span>
+            </div>
+            <h3 class="post-card-title"><a href="#">Why I Run AI Models Locally Instead of Using Cloud APIs</a></h3>
+            <p class="post-card-excerpt">The real cost comparison between local Ollama and cloud providers.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- ============================================================
+     PAGE: POST 2 (sample article)
+     ============================================================ -->
+<div id="post-2" class="page" style="display:none;">
+  <main>
+    <article>
+      <div class="article-header">
+        <div class="post-card-meta">
+          <span class="post-card-category">Automation</span>
+          <span class="post-card-date">Mar 12, 2026</span>
+          <span class="post-card-date">&middot; 6 min read</span>
+        </div>
+        <h1>Automated Content Pipelines with OpenClaw and Local AI</h1>
+        <p class="article-subtitle">Building a zero-cost content factory that writes, optimizes, and publishes blog posts on autopilot using local LLMs and a Discord-controlled agent framework.</p>
+      </div>
+
+      <div class="article-content">
+        <h2>The Architecture</h2>
+        <p>The pipeline is simple in concept: an AI agent framework (OpenClaw) orchestrates a local LLM (Qwen3 via Ollama) to write, optimize, and schedule content. You communicate with it through Discord and it runs on a cron schedule.</p>
+        <p>The five core skills in the pipeline are:</p>
+        <ul>
+          <li><strong>Blog Writer</strong> — Generates full-length articles from a topic prompt</li>
+          <li><strong>SEO Optimizer</strong> — Restructures content for search engines</li>
+          <li><strong>Social Media</strong> — Creates platform-specific posts from blog content</li>
+          <li><strong>Newsletter</strong> — Drafts weekly email digests</li>
+          <li><strong>Content Repurposer</strong> — Turns 1 blog post into 13-19 pieces</li>
+        </ul>
+
+        <h2>Cost Breakdown</h2>
+        <p>This is where it gets interesting. The entire pipeline runs on hardware I already own:</p>
+
+        <pre><code>Component          | Monthly Cost
+-------------------|-----------
+Ollama / Qwen3     | $0 (local)
+OpenClaw           | $0 (open source)
+Electricity (est.) | $8-12
+Domain + hosting   | $10-15
+-------------------|-----------
+Total              | ~$20/month</code></pre>
+
+        <p>Compare that to a cloud-based stack using GPT-4 + Jasper + scheduling tools, which would run $150-300/month for similar output volume.</p>
+
+        <h2>Scaling on Two Systems</h2>
+        <p>I run two setups. The Windows machine (Ryzen 9 + RX 7900 XT) handles the heavy lifting with the 30B model — 10+ articles per day with parallel execution. The Lubuntu machine (i7-3820 + GTX 1060) runs the smaller 4B model at 3-5 articles per day.</p>
+        <p>Together, that's roughly 15 articles daily across different niches. The content repurposer then multiplies each article into social posts, newsletter snippets, and thread formats.</p>
+
+        <blockquote>The moment you automate a repeated task is the moment you start compounding your time.</blockquote>
+
+        <h2>Monetization</h2>
+        <p>The content feeds into affiliate marketing sites. Each niche blog is built around a specific topic with relevant affiliate links. The SEO optimizer skill ensures articles are structured for long-tail keywords with proper heading hierarchy, meta descriptions, and internal linking.</p>
+        <p>It takes 2-3 months for SEO to compound. The posts written today generate traffic six months from now. That's the definition of passive income — upfront effort that pays dividends over time.</p>
+      </div>
+    </article>
+
+    <section class="related-posts">
+      <div class="section-header">
+        <h2 class="section-title">Related Posts</h2>
+      </div>
+      <div class="posts-grid" style="max-width: var(--content-default);">
+        <article class="post-card" data-page="post-1" style="cursor:pointer;" onclick="window.location.hash='post-1'">
+          <div class="post-card-body">
+            <div class="post-card-meta">
+              <span class="post-card-category">AI & LLMs</span>
+              <span class="post-card-date">Mar 14, 2026</span>
+            </div>
+            <h3 class="post-card-title"><a href="#post-1" data-page="post-1">Running Qwen3 30B Locally: A Practical Guide for AMD GPUs</a></h3>
+            <p class="post-card-excerpt">How I got a 30-billion parameter model running on a consumer RX 7900 XT.</p>
+          </div>
+        </article>
+        <article class="post-card">
+          <div class="post-card-body">
+            <div class="post-card-meta">
+              <span class="post-card-category">Tutorials</span>
+              <span class="post-card-date">Mar 5, 2026</span>
+            </div>
+            <h3 class="post-card-title"><a href="#">Setting Up a Hybrid AI Video Pipeline for Under $40/Month</a></h3>
+            <p class="post-card-excerpt">Combining local SDXL with free cloud video APIs for automated content.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- ============================================================
+     PAGE: ARCHIVE
+     ============================================================ -->
+<div id="archive" class="page" style="display:none;">
+  <main>
+    <div class="archive-header">
+      <h1>All Posts</h1>
+      <p>Everything I've written, from newest to oldest.</p>
+    </div>
+
+    <div class="categories" style="margin-bottom: var(--space-8);">
+      <a href="#" class="category-pill active" onclick="return false;">All</a>
+      <a href="#" class="category-pill" onclick="return false;">AI & LLMs</a>
+      <a href="#" class="category-pill" onclick="return false;">Automation</a>
+      <a href="#" class="category-pill" onclick="return false;">Philosophy</a>
+      <a href="#" class="category-pill" onclick="return false;">Futurism</a>
+      <a href="#" class="category-pill" onclick="return false;">Trading</a>
+      <a href="#" class="category-pill" onclick="return false;">Tutorials</a>
+      <a href="#" class="category-pill" onclick="return false;">Random</a>
+    </div>
+
+    <section class="posts-section">
+      <div class="posts-grid">
+        <article class="post-card" data-page="post-budgetboss" style="cursor:pointer;" onclick="window.location.hash='post-budgetboss'">
+          <div class="post-card-image" style="background: linear-gradient(135deg, #e6f4ea, #d4edda); display:flex; align-items:center; justify-content:center;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" style="opacity:0.4"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div class="post-card-body">
+            <div class="post-card-meta">
+              <span class="post-card-category">Automation</span>
+              <span class="post-card-date">Mar 17, 2026</span>
+            </div>
+            <h3 class="post-card-title"><a href="#post-budgetboss" data-page="post-budgetboss">I Built a Gamified Budgeting App Because Spreadsheets Weren't Cutting It</a></h3>
+            <p class="post-card-excerpt">Streaks, XP, badges, and compound growth projections — turning personal finance into a game.</p>
+          </div>
+        </article>
+
+        <article class="post-card" data-page="post-1" style="cursor:pointer;" onclick="window.location.hash='post-1'">
+          <div class="post-card-image" style="background: linear-gradient(135deg, var(--color-primary-light), var(--color-surface-2)); display:flex; align-items:center; justify-content:center;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" style="opacity:0.4"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="post-card-body">
+            <div class="post-card-meta">
+              <span class="post-card-category">AI & LLMs</span>
+              <span class="post-card-date">Mar 14, 2026</span>
+            </div>
+            <h3 class="post-card-title"><a href="#post-1" data-page="post-1">Running Qwen3 30B Locally: A Practical Guide for AMD GPUs</a></h3>
+            <p class="post-card-excerpt">How I got a 30-billion parameter model running on a consumer RX 7900 XT with Ollama and ROCm.</p>
+          </div>
+        </article>
+
+        <article class="post-card" data-page="post-2" style="cursor:pointer;" onclick="window.location.hash='post-2'">
+          <div class="post-card-image" style="background: linear-gradient(135deg, var(--color-surface-offset), var(--color-surface-2)); display:flex; align-items:center; justify-content:center;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" style="opacity:0.4"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <div class="post-card-body">
+            <div class="post-card-meta">
+              <span class="post-card-category">Automation</span>
+              <span class="post-card-date">Mar 12, 2026</span>
+            </div>
+            <h3 class="post-card-title"><a href="#post-2" data-page="post-2">Automated Content Pipelines with OpenClaw and Local AI</a></h3>
+            <p class="post-card-excerpt">Building a zero-cost content factory that writes, optimizes, and publishes blog posts on autopilot.</p>
+          </div>
+        </article>
+
+        <article class="post-card">
+          <div class="post-card-image" style="background: linear-gradient(135deg, var(--color-surface-2), var(--color-surface-offset)); display:flex; align-items:center; justify-content:center;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" style="opacity:0.4"><polyline points="22,7 13.5,15.5 8.5,10.5 2,17"/><polyline points="16,7 22,7 22,13"/></svg>
+          </div>
+          <div class="post-card-body">
+            <div class="post-card-meta">
+              <span class="post-card-category">Trading</span>
+              <span class="post-card-date">Mar 10, 2026</span>
+            </div>
+            <h3 class="post-card-title"><a href="#">Copy-Trading Bots on Polymarket: Architecture and Lessons</a></h3>
+            <p class="post-card-excerpt">Tracking high-win-rate wallets and automating trades with Python.</p>
+          </div>
+        </article>
+
+        <article class="post-card">
+          <div class="post-card-image" style="background: linear-gradient(135deg, var(--color-surface-2), var(--color-surface)); display:flex; align-items:center; justify-content:center;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" style="opacity:0.4"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <div class="post-card-body">
+            <div class="post-card-meta">
+              <span class="post-card-category">Hardware</span>
+              <span class="post-card-date">Mar 8, 2026</span>
+            </div>
+            <h3 class="post-card-title"><a href="#">Silencing the AW3423DWF: Software Fix for OLED Coil Whine</a></h3>
+            <p class="post-card-excerpt">A custom Python tool that monitors and adjusts monitor settings to eliminate coil whine.</p>
+          </div>
+        </article>
+
+        <article class="post-card">
+          <div class="post-card-image" style="background: linear-gradient(135deg, var(--color-surface-offset), var(--color-surface-2)); display:flex; align-items:center; justify-content:center;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" style="opacity:0.4"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div class="post-card-body">
+            <div class="post-card-meta">
+              <span class="post-card-category">Tutorials</span>
+              <span class="post-card-date">Mar 5, 2026</span>
+            </div>
+            <h3 class="post-card-title"><a href="#">Setting Up a Hybrid AI Video Pipeline for Under $40/Month</a></h3>
+            <p class="post-card-excerpt">Combining local SDXL with free cloud video APIs for automated short-form content.</p>
+          </div>
+        </article>
+
+        <article class="post-card">
+          <div class="post-card-image" style="background: linear-gradient(135deg, var(--color-surface-2), var(--color-primary-light)); display:flex; align-items:center; justify-content:center;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" style="opacity:0.4"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          </div>
+          <div class="post-card-body">
+            <div class="post-card-meta">
+              <span class="post-card-category">AI & LLMs</span>
+              <span class="post-card-date">Mar 2, 2026</span>
+            </div>
+            <h3 class="post-card-title"><a href="#">Why I Run AI Models Locally Instead of Using Cloud APIs</a></h3>
+            <p class="post-card-excerpt">The real cost comparison between local Ollama and cloud providers.</p>
+          </div>
+        </article>
+
+        <article class="post-card" data-page="post-philosophy" style="cursor:pointer;" onclick="window.location.hash='post-philosophy'">
+          <div class="post-card-image" style="background: linear-gradient(135deg, #f0ede6, #e8e4db); display:flex; align-items:center; justify-content:center;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" style="opacity:0.4"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          </div>
+          <div class="post-card-body">
+            <div class="post-card-meta">
+              <span class="post-card-category">Philosophy</span>
+              <span class="post-card-date">Mar 9, 2026</span>
+            </div>
+            <h3 class="post-card-title"><a href="#post-philosophy" data-page="post-philosophy">The Automation Paradox: When Machines Free Your Time, What Do You Do With It?</a></h3>
+            <p class="post-card-excerpt">I automated most of my income. Then I had to confront the question that productivity culture never answers.</p>
+          </div>
+        </article>
+
+        <article class="post-card" data-page="post-futurism" style="cursor:pointer;" onclick="window.location.hash='post-futurism'">
+          <div class="post-card-image" style="background: linear-gradient(135deg, #e6ecf5, #dce3f0); display:flex; align-items:center; justify-content:center;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" style="opacity:0.4"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <div class="post-card-body">
+            <div class="post-card-meta">
+              <span class="post-card-category">Futurism</span>
+              <span class="post-card-date">Mar 7, 2026</span>
+            </div>
+            <h3 class="post-card-title"><a href="#post-futurism" data-page="post-futurism">The One-Person Company Is the Future of Business</a></h3>
+            <p class="post-card-excerpt">AI agents, automated pipelines, and zero employees. One person can run what used to require a team of 50.</p>
+          </div>
+        </article>
+
+        <article class="post-card" data-page="post-random" style="cursor:pointer;" onclick="window.location.hash='post-random'">
+          <div class="post-card-image" style="background: linear-gradient(135deg, var(--color-surface-2), var(--color-surface-offset)); display:flex; align-items:center; justify-content:center;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="1.5" style="opacity:0.4"><path d="M12 20h9M12 4h9M3 12h18M3 4l4 4-4 4"/></svg>
+          </div>
+          <div class="post-card-body">
+            <div class="post-card-meta">
+              <span class="post-card-category">Random</span>
+              <span class="post-card-date">Mar 6, 2026</span>
+            </div>
+            <h3 class="post-card-title"><a href="#post-random" data-page="post-random">Things I Changed My Mind About in 2025</a></h3>
+            <p class="post-card-excerpt">Crypto, remote work, social media, morning routines, and positions I've completely reversed on.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- ============================================================
+     PAGE: PHILOSOPHY POST
+     ============================================================ -->
+<div id="post-philosophy" class="page" style="display:none;">
+  <main>
+    <article>
+      <div class="article-header">
+        <div class="post-card-meta">
+          <span class="post-card-category">Philosophy</span>
+          <span class="post-card-date">Mar 9, 2026</span>
+          <span class="post-card-date">&middot; 7 min read</span>
+        </div>
+        <h1>The Automation Paradox: When Machines Free Your Time, What Do You Do With It?</h1>
+        <p class="article-subtitle">I automated most of my income. Then I had to confront the question that productivity culture never answers: what's the point?</p>
+      </div>
+
+      <div class="article-content">
+        <h2>The Promise</h2>
+        <p>The pitch of automation is seductive: build systems that work while you sleep, and you'll have unlimited time for the things that matter. I bought this premise completely. I spent months building content pipelines, trading bots, and scheduling systems. And it worked. The machines run. The income comes in.</p>
+        <p>Then I woke up one Tuesday with nothing urgent to do and realized I had no idea what "the things that matter" actually were.</p>
+
+        <h2>Productivity Is a Trap Without Purpose</h2>
+        <p>The entire productivity industry is built on an unexamined assumption: that freeing up time is inherently good. But time for what? Nobody asks this question because the answer is uncomfortable. Most of us have been so conditioned by work that we don't know who we are without it.</p>
+        <p>Seneca noticed this 2,000 years ago. In "On the Shortness of Life," he argued that people don't have short lives — they waste long ones. We fill our days with busywork, meetings, and optimizations that make us feel productive without ever asking what we're producing it all for.</p>
+
+        <blockquote>It is not that we have a short time to live, but that we waste a great deal of it. Life is long enough, and a sufficiently generous amount has been given to us for the highest achievements if it were all well invested.</blockquote>
+
+        <h2>The Automation Paradox</h2>
+        <p>Here's the paradox: the better your automation gets, the less you need to do. The less you need to do, the more you're forced to confront the question of what you actually want. And most people have never seriously thought about this.</p>
+        <p>I found myself doing what most people do when they suddenly have free time — I built more automation. Not because I needed to, but because building was the only thing I knew how to do. The tool had become the goal.</p>
+
+        <h2>What the Stoics Got Right</h2>
+        <p>The Stoics had a framework for this. They distinguished between things "up to us" (our judgments, values, character) and things "not up to us" (external outcomes, other people, market conditions). The automated systems handle the "not up to us" part. But no amount of automation can handle the internal work.</p>
+        <p>Marcus Aurelius ran the Roman Empire and still made time each morning to write philosophy in his journal. Not because it was productive, but because examining life was the point of having one.</p>
+
+        <h2>Where I Landed</h2>
+        <p>I don't have this figured out. But I've started making some changes:</p>
+        <ul>
+          <li>I read philosophy for an hour every morning. Not self-help. Actual philosophy — Seneca, Epictetus, Camus, Simone Weil.</li>
+          <li>I write essays that have nothing to do with SEO or monetization.</li>
+          <li>I spend time on problems that can't be optimized — relationships, health, understanding the world.</li>
+          <li>I let some things be inefficient on purpose.</li>
+        </ul>
+        <p>The machines keep running. The income keeps coming. But the question "what's the point?" doesn't have a technical solution. And I think that's actually the most important thing I've learned from building all this automation.</p>
+      </div>
+    </article>
+
+    <section class="related-posts">
+      <div class="section-header">
+        <h2 class="section-title">Related Posts</h2>
+      </div>
+      <div class="posts-grid" style="max-width: var(--content-default);">
+        <article class="post-card" data-page="post-futurism" style="cursor:pointer;" onclick="window.location.hash='post-futurism'">
+          <div class="post-card-body">
+            <div class="post-card-meta">
+              <span class="post-card-category">Futurism</span>
+              <span class="post-card-date">Mar 7, 2026</span>
+            </div>
+            <h3 class="post-card-title"><a href="#post-futurism" data-page="post-futurism">The One-Person Company Is the Future of Business</a></h3>
+            <p class="post-card-excerpt">AI agents and zero employees. One person can now run what used to take fifty.</p>
+          </div>
+        </article>
+        <article class="post-card" data-page="post-random" style="cursor:pointer;" onclick="window.location.hash='post-random'">
+          <div class="post-card-body">
+            <div class="post-card-meta">
+              <span class="post-card-category">Random</span>
+              <span class="post-card-date">Mar 6, 2026</span>
+            </div>
+            <h3 class="post-card-title"><a href="#post-random" data-page="post-random">Things I Changed My Mind About in 2025</a></h3>
+            <p class="post-card-excerpt">Positions I've completely reversed on this year.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- ============================================================
+     PAGE: FUTURISM POST
+     ============================================================ -->
+<div id="post-futurism" class="page" style="display:none;">
+  <main>
+    <article>
+      <div class="article-header">
+        <div class="post-card-meta">
+          <span class="post-card-category">Futurism</span>
+          <span class="post-card-date">Mar 7, 2026</span>
+          <span class="post-card-date">&middot; 6 min read</span>
+        </div>
+        <h1>The One-Person Company Is the Future of Business</h1>
+        <p class="article-subtitle">AI agents, automated pipelines, and zero employees. We're entering an era where one person can run what used to require a team of 50.</p>
+      </div>
+
+      <div class="article-content">
+        <h2>The Old Model Is Dying</h2>
+        <p>The traditional business scaling model goes: founder builds thing → hires team → team scales thing → founder manages team. By the time you have 20 employees, you're not building anymore — you're managing people who are building. The founder becomes an HR department with a vision board.</p>
+        <p>AI changes this equation entirely. Not in the vague "AI will transform everything" way that LinkedIn thought leaders love. In a concrete, measurable way: tasks that used to require hiring someone now cost $0-40/month in API calls or run free on local hardware.</p>
+
+        <h2>What One Person Can Do in 2026</h2>
+        <p>Here's what a single person with the right automation stack can operate today:</p>
+        <ul>
+          <li><strong>Content production:</strong> 10-15 optimized blog posts per day across multiple niches, including social media distribution and newsletter generation. Cost: ~$20/month in electricity.</li>
+          <li><strong>Trading operations:</strong> Automated copy-trading across prediction markets, monitoring 25+ wallets, executing trades 24/7 with auto-withdrawal. Cost: $0.</li>
+          <li><strong>Video production:</strong> Short-form video content from script to final cut, combining local image generation with cloud video APIs. Cost: $0-40/month.</li>
+          <li><strong>Customer service:</strong> AI chatbots handle 90% of support queries. Cost: negligible.</li>
+          <li><strong>Website management:</strong> AI-generated and optimized landing pages, A/B tested automatically. Cost: hosting fees only.</li>
+        </ul>
+        <p>Five years ago, that list would require a content team, a quant trader, a video editor, a support agent, and a web developer. Today it requires one person and a good GPU.</p>
+
+        <h2>The Economic Implications</h2>
+        <p>This isn't just a lifestyle optimization. It's a structural shift in how value is created and captured. When one person can do the work of a small company, the economics change dramatically:</p>
+        <ul>
+          <li><strong>Near-zero marginal costs.</strong> Every additional article, video, or trade costs almost nothing. Scaling doesn't require proportional resource increases.</li>
+          <li><strong>100% profit capture.</strong> No salaries, no office, no HR overhead. Revenue minus hosting and electricity equals profit.</li>
+          <li><strong>Infinite pivotability.</strong> Want to enter a new niche? Deploy a new skill to your agent framework. No hiring, no training, no onboarding.</li>
+        </ul>
+
+        <blockquote>The future of business isn't fewer employees. It's zero employees. The founder IS the company, amplified by machines.</blockquote>
+
+        <h2>What This Means for Society</h2>
+        <p>If one person can produce the output of fifty, what happens to the other forty-nine? This is the uncomfortable question that futurists love to hand-wave with "new jobs we can't imagine yet."</p>
+        <p>I don't have the answer. But I know that pretending the shift isn't happening doesn't help. The people who understand these tools will capture disproportionate value. The people who don't will be competing for fewer remaining positions. The transition period is going to be messy.</p>
+        <p>The best advice I can give: learn to work with AI systems now, while the knowledge gap still matters. In five years, it'll be table stakes.</p>
+      </div>
+    </article>
+
+    <section class="related-posts">
+      <div class="section-header">
+        <h2 class="section-title">Related Posts</h2>
+      </div>
+      <div class="posts-grid" style="max-width: var(--content-default);">
+        <article class="post-card" data-page="post-philosophy" style="cursor:pointer;" onclick="window.location.hash='post-philosophy'">
+          <div class="post-card-body">
+            <div class="post-card-meta">
+              <span class="post-card-category">Philosophy</span>
+              <span class="post-card-date">Mar 9, 2026</span>
+            </div>
+            <h3 class="post-card-title"><a href="#post-philosophy" data-page="post-philosophy">The Automation Paradox: When Machines Free Your Time, What Do You Do With It?</a></h3>
+            <p class="post-card-excerpt">What happens after you automate everything?</p>
+          </div>
+        </article>
+        <article class="post-card" data-page="post-2" style="cursor:pointer;" onclick="window.location.hash='post-2'">
+          <div class="post-card-body">
+            <div class="post-card-meta">
+              <span class="post-card-category">Automation</span>
+              <span class="post-card-date">Mar 12, 2026</span>
+            </div>
+            <h3 class="post-card-title"><a href="#post-2" data-page="post-2">Automated Content Pipelines with OpenClaw and Local AI</a></h3>
+            <p class="post-card-excerpt">The technical reality behind one-person content operations.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- ============================================================
+     PAGE: RANDOM POST
+     ============================================================ -->
+<div id="post-random" class="page" style="display:none;">
+  <main>
+    <article>
+      <div class="article-header">
+        <div class="post-card-meta">
+          <span class="post-card-category">Random</span>
+          <span class="post-card-date">Mar 6, 2026</span>
+          <span class="post-card-date">&middot; 5 min read</span>
+        </div>
+        <h1>Things I Changed My Mind About in 2025</h1>
+        <p class="article-subtitle">Crypto, remote work, social media, morning routines, and a few other positions I've completely reversed on.</p>
+      </div>
+
+      <div class="article-content">
+        <p>I try to update my beliefs when the evidence changes. Here's what shifted for me over the past year.</p>
+
+        <h2>Crypto: From Skeptic to Cautious Participant</h2>
+        <p>I spent years dismissing crypto as speculation dressed up as revolution. Then I started building Polymarket bots and realized prediction markets are genuinely useful — they aggregate information better than polls, pundits, or news organizations.</p>
+        <p>I still think 95% of the crypto space is noise. But the 5% that works — stablecoins for cross-border payments, prediction markets for information aggregation, DeFi for programmable finance — actually solves real problems. My mistake was writing off the entire category because most of it is junk.</p>
+
+        <h2>Remote Work: It's Not For Everyone</h2>
+        <p>I was a zealous remote work advocate in 2020-2023. Work from anywhere, set your own hours, optimize your environment. The dream.</p>
+        <p>Then I watched friends struggle with isolation, saw junior developers stall without in-person mentorship, and noticed my own productivity fluctuate wildly without external structure. Remote work is great for self-directed senior people building defined projects. It's terrible for collaborative ideation, cultural transmission, and people who need social motivation.</p>
+        <p>The answer isn't "remote vs. office." It's "what kind of work are you doing, and what kind of person are you?"</p>
+
+        <h2>Social Media: Quit Most, Double Down on One</h2>
+        <p>I used to be on everything — Twitter, Reddit, LinkedIn, Instagram. The constant context-switching was killing my focus. In early 2025, I deleted everything except one platform where my audience actually lives.</p>
+        <p>The result: better content on one channel, more time for deep work, and zero FOMO. The "be everywhere" advice is wrong. Be where your people are, and ignore the rest.</p>
+
+        <h2>Morning Routines: Overrated</h2>
+        <p>I spent six months doing the full Huberman/Atomic Habits morning routine — cold shower, sunlight, meditation, journaling, workout, all before 8am. It was exhausting and I dreaded mornings.</p>
+        <p>Now I wake up, make coffee, and start working on whatever I'm most excited about. Some days that's at 6am, some days it's at 10am. Energy management beats time management. Your best work happens when you're genuinely engaged, not when an arbitrary schedule says you should be productive.</p>
+
+        <h2>AI Hype: I Was Too Dismissive</h2>
+        <p>When ChatGPT launched, I thought it was a clever demo that would plateau quickly. I was dead wrong. The improvement curve from GPT-3.5 to where we are now is staggering. Local models on consumer hardware can now do 80% of what cloud APIs did two years ago.</p>
+        <p>My updated position: AI will be the most transformative technology of our lifetime, but the transformation will be slower, messier, and distributed differently than the hype cycle suggests. It won't replace most jobs overnight. It will slowly change what every job looks like.</p>
+
+        <h2>The Meta-Lesson</h2>
+        <p>The common thread: I was holding positions based on vibes and identity rather than evidence. "Crypto person" vs. "anti-crypto person." "Remote work advocate" vs. "office advocate." These are tribal identities, not analytical frameworks.</p>
+        <p>The best thinkers I know hold positions loosely and update frequently. I'm trying to do more of that.</p>
+      </div>
+    </article>
+
+    <section class="related-posts">
+      <div class="section-header">
+        <h2 class="section-title">Related Posts</h2>
+      </div>
+      <div class="posts-grid" style="max-width: var(--content-default);">
+        <article class="post-card" data-page="post-philosophy" style="cursor:pointer;" onclick="window.location.hash='post-philosophy'">
+          <div class="post-card-body">
+            <div class="post-card-meta">
+              <span class="post-card-category">Philosophy</span>
+              <span class="post-card-date">Mar 9, 2026</span>
+            </div>
+            <h3 class="post-card-title"><a href="#post-philosophy" data-page="post-philosophy">The Automation Paradox: When Machines Free Your Time, What Do You Do With It?</a></h3>
+            <p class="post-card-excerpt">What happens after you automate everything?</p>
+          </div>
+        </article>
+        <article class="post-card" data-page="post-futurism" style="cursor:pointer;" onclick="window.location.hash='post-futurism'">
+          <div class="post-card-body">
+            <div class="post-card-meta">
+              <span class="post-card-category">Futurism</span>
+              <span class="post-card-date">Mar 7, 2026</span>
+            </div>
+            <h3 class="post-card-title"><a href="#post-futurism" data-page="post-futurism">The One-Person Company Is the Future of Business</a></h3>
+            <p class="post-card-excerpt">One person can now run what used to require a team of 50.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- ============================================================
+     PAGE: BUDGETBOSS POST
+     ============================================================ -->
+<div id="post-budgetboss" class="page" style="display:none;">
+  <main>
+    <article>
+      <div class="article-header">
+        <div class="post-card-meta">
+          <span class="post-card-category">Automation</span>
+          <span class="post-card-date">Mar 17, 2026</span>
+          <span class="post-card-date">&middot; 7 min read</span>
+        </div>
+        <h1>I Built a Gamified Budgeting App Because Spreadsheets Weren't Cutting It</h1>
+        <p class="article-subtitle">Streaks, XP, badges, and compound growth projections &mdash; how I turned personal finance into a game I actually want to play.</p>
+      </div>
+
+      <div class="article-content">
+        <h2>The Problem</h2>
+        <p>I track my spending with Rocket Money. It's great at telling me where my money goes. The problem is that knowing where your money goes and actually changing your behavior are two completely different things.</p>
+        <p>Every month I'd export the CSV, look at the damage, feel bad for 20 minutes, and then continue exactly as before. The data was there. The motivation wasn't.</p>
+
+        <h2>Why Gamification Actually Works</h2>
+        <p>I've been thinking about habit loops since reading Atomic Habits a few years back. The core insight: behavior change sticks when there's an immediate reward, not a distant one. Saving money has a delayed reward (retirement, emergency fund, freedom). Spending money has an immediate reward (dopamine, stuff, convenience).</p>
+        <p>Gamification closes that gap. Instead of waiting 30 years to feel the benefit of saving, you get XP, level up, earn badges, and maintain streaks right now. It's the same psychological trick that makes Duolingo addictive &mdash; except instead of learning Spanish, you're building wealth.</p>
+
+        <h2>What I Built</h2>
+        <p>BudgetBoss is a mobile-friendly web app that imports your Rocket Money CSV exports and turns your financial data into a game. Here's what it does:</p>
+        <ul>
+          <li><strong>Dashboard with spending breakdown</strong> &mdash; Visual charts showing where every dollar goes, broken down by category. No more guessing.</li>
+          <li><strong>Streak tracking</strong> &mdash; Stay under budget for consecutive days and watch your streak grow. Miss a day and it resets. Simple, brutal, effective.</li>
+          <li><strong>XP and leveling system</strong> &mdash; Earn experience points for staying under budget, hitting savings goals, and maintaining streaks. Level up from Budget Beginner to Financial Boss.</li>
+          <li><strong>Badge collection</strong> &mdash; Unlock achievements like "First Week Streak," "Savings Starter," and "Investment Initiate." It sounds silly until you realize you're checking the app daily to maintain your progress.</li>
+          <li><strong>Savings goals with visual progress</strong> &mdash; Set targets (emergency fund, vacation, new GPU) and watch the progress bars fill up over time.</li>
+          <li><strong>Compound growth projections</strong> &mdash; An investment calculator that shows what your savings become over 10, 20, 30 years at different return rates. Seeing "$500/month becomes $1.1M in 30 years" is more motivating than any budgeting advice.</li>
+          <li><strong>Spending alerts</strong> &mdash; Category-level warnings when you're approaching your budget limits.</li>
+        </ul>
+
+        <h2>The Tech Stack</h2>
+        <p>I wanted this to work on my phone without installing anything, so I built it as a responsive web app:</p>
+        <pre><code>Frontend:  React + Tailwind CSS + shadcn/ui
+Backend:   Express.js (serves the app)
+Data:      CSV import (Rocket Money export format)
+Storage:   Local browser storage (no cloud, no accounts)
+Hosting:   Any static host or local server</code></pre>
+        <p>The entire thing runs client-side after the initial load. Your financial data never leaves your device. No accounts, no cloud sync, no privacy concerns. Just you and your numbers.</p>
+
+        <h2>CSV Import Flow</h2>
+        <p>The workflow is dead simple:</p>
+        <ol>
+          <li>Open Rocket Money, go to Transactions, export as CSV</li>
+          <li>Open BudgetBoss, click Import, select the file</li>
+          <li>The app parses your transactions, categorizes spending, and populates the dashboard</li>
+        </ol>
+        <p>The parser handles Rocket Money's export format natively &mdash; date, description, category, and amount columns. It auto-maps categories to budget buckets (Food &amp; Drink, Shopping, Transportation, etc.) and flags anything it can't classify for manual review.</p>
+
+        <h2>Does It Work?</h2>
+        <p>It's been a week. I've checked the app every single day, which is more than I can say for any budgeting tool I've tried. The streak counter is surprisingly motivating &mdash; I caught myself at the grocery store thinking "if I put this back, I keep my streak" and that's exactly the kind of in-the-moment decision-making that spreadsheets never triggered.</p>
+        <p>The compound growth chart is the other secret weapon. When you can see that the $200 you didn't spend this month becomes $4,800 in 20 years at 7% returns, the math of delayed gratification becomes visceral instead of abstract.</p>
+
+        <blockquote>The best financial tool isn't the most sophisticated one. It's the one you actually open every day.</blockquote>
+
+        <h2>What's Next</h2>
+        <p>A few things I want to add:</p>
+        <ul>
+          <li><strong>Automated CSV sync</strong> &mdash; Instead of manual exports, set up a scheduled pipeline to pull data automatically.</li>
+          <li><strong>Social accountability</strong> &mdash; Optional sharing of streaks and levels with a friend or partner for mutual motivation.</li>
+          <li><strong>Custom budget rules</strong> &mdash; AI-generated budget suggestions based on spending patterns and income.</li>
+          <li><strong>PWA support</strong> &mdash; Install it as a home screen app for true native feel.</li>
+        </ul>
+        <p>The code is a single-page React app. If you want to try it yourself or fork it for your own use, the whole thing runs locally with no external dependencies. Your data stays on your device.</p>
+      </div>
+    </article>
+
+    <section class="related-posts">
+      <div class="section-header">
+        <h2 class="section-title">Related Posts</h2>
+      </div>
+      <div class="posts-grid" style="max-width: var(--content-default);">
+        <article class="post-card" data-page="post-philosophy" style="cursor:pointer;" onclick="window.location.hash='post-philosophy'">
+          <div class="post-card-body">
+            <div class="post-card-meta">
+              <span class="post-card-category">Philosophy</span>
+              <span class="post-card-date">Mar 9, 2026</span>
+            </div>
+            <h3 class="post-card-title"><a href="#post-philosophy" data-page="post-philosophy">The Automation Paradox: When Machines Free Your Time, What Do You Do With It?</a></h3>
+            <p class="post-card-excerpt">What happens after you automate everything?</p>
+          </div>
+        </article>
+        <article class="post-card" data-page="post-2" style="cursor:pointer;" onclick="window.location.hash='post-2'">
+          <div class="post-card-body">
+            <div class="post-card-meta">
+              <span class="post-card-category">Automation</span>
+              <span class="post-card-date">Mar 12, 2026</span>
+            </div>
+            <h3 class="post-card-title"><a href="#post-2" data-page="post-2">Automated Content Pipelines with OpenClaw and Local AI</a></h3>
+            <p class="post-card-excerpt">The technical reality behind one-person content operations.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- ============================================================
+     PAGE: ABOUT
+     ============================================================ -->
+<div id="about" class="page" style="display:none;">
+  <main>
+    <section class="about-hero">
+      <h1>About Me</h1>
+    </section>
+
+    <div class="about-content">
+      <p>I'm Alex McClellan. I build automated systems, think about where technology is heading, and occasionally write about whatever else is on my mind — philosophy, futurism, or just observations about the world.</p>
+      <p>This blog is part technical documentation, part essay collection. The tech posts come from direct experience building real systems. The rest comes from thinking too much while those systems run themselves.</p>
+
+      <h2>What I'm Building</h2>
+      <p>Right now, I'm focused on a few core projects:</p>
+      <ul>
+        <li><strong>BudgetBoss</strong> — A gamified budgeting web app that imports Rocket Money data and turns personal finance into a game with streaks, XP, badges, and compound growth projections.</li>
+        <li><strong>OpenClaw Content Pipeline</strong> — An automated content factory powered by local LLMs (Qwen3 via Ollama) that writes, optimizes, and publishes blog posts and social media content on a schedule.</li>
+        <li><strong>Polymarket Copy-Trading Bots</strong> — Python bots that identify high-win-rate wallets on prediction markets and mirror their trades automatically, with profit sweeping to external wallets.</li>
+        <li><strong>Hybrid Video Pipeline</strong> — A system combining local image generation (ComfyUI + Stable Diffusion XL) with cloud video APIs for automated short-form video content.</li>
+      </ul>
+
+      <h2>My Setup</h2>
+      <div class="tech-stack">
+        <div class="tech-item">
+          <h3>Primary System</h3>
+          <p>Windows 11, Ryzen 9 7900X, RX 7900 XT (20GB), 32GB DDR5. Runs the 30B parameter model and handles parallel content generation.</p>
+        </div>
+        <div class="tech-item">
+          <h3>Secondary System</h3>
+          <p>Lubuntu, i7-3820, GTX 1060 6GB, 16GB RAM. Runs the 4B model for lighter workloads and serves as a dedicated trading bot host.</p>
+        </div>
+        <div class="tech-item">
+          <h3>AI Stack</h3>
+          <p>Ollama for inference, OpenClaw for orchestration, ComfyUI for image generation. Everything runs locally except video generation APIs.</p>
+        </div>
+        <div class="tech-item">
+          <h3>Languages & Tools</h3>
+          <p>Python, JavaScript, FFmpeg, Docker, systemd. Heavy use of asyncio for the trading bots and cron scheduling for content automation.</p>
+        </div>
+      </div>
+
+      <h2>Why This Blog</h2>
+      <p>Most "make money with AI" content is surface-level clickbait. I wanted a place to document the actual technical implementation — configs, hardware choices, benchmarks, honest cost breakdowns. But I also wanted somewhere to write about the bigger questions: what happens when we automate most work, where this technology is actually heading, and what it means to live well in a world that's changing this fast.</p>
+      <p>Some posts are technical. Some are philosophical. Some are just random thoughts. That's the point — real people don't fit into a single niche.</p>
+
+      <h2>Get in Touch</h2>
+      <p>Reach me at <a href="mailto:alex@alexmcclellan.com" target="_blank" rel="noopener noreferrer">alex@alexmcclellan.com</a>. I read everything.</p>
+    </div>
+  </main>
+</div>
+
+<!-- ============================================================
+     FOOTER (shared)
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span class="footer-copy">&copy; 2026 Alex McClellan. All rights reserved.</span>
+    <ul class="footer-links" role="list">
+      <li><a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script async src="https://subscribe-forms.beehiiv.com/embed.js"></script>
+<script defer src="./app.js"></script>
+</body>
+</html>

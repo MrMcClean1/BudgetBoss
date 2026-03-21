@@ -1,0 +1,48 @@
+{
+  "expo": {
+    "name": "BudgetBoss",
+    "slug": "budgetboss",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "scheme": "budgetboss",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#10B981"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.budgetboss.app",
+      "buildNumber": "1",
+      "infoPlist": {
+        "NSCameraUsageDescription": "BudgetBoss may use your camera to scan receipts.",
+        "NSPhotoLibraryUsageDescription": "BudgetBoss may access your photos to attach receipts to transactions."
+      },
+      "entitlements": {
+        "aps-environment": "production"
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#10B981"
+      },
+      "package": "com.budgetboss.app"
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
