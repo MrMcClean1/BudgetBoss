@@ -22,7 +22,12 @@
       "autoIncrement": true,
       "channel": "production",
       "ios": {
-        "buildConfiguration": "Release"
+        "buildConfiguration": "Release",
+        "resourceClass": "m-medium"
+      },
+      "android": {
+        "buildType": "apk",
+        "resourceClass": "medium"
       }
     }
   },
@@ -31,7 +36,15 @@
       "ios": {
         "appleId": "YOUR_APPLE_ID@example.com",
         "ascAppId": "YOUR_APP_STORE_CONNECT_APP_ID",
-        "appleTeamId": "YOUR_APPLE_TEAM_ID"
+        "appleTeamId": "YOUR_APPLE_TEAM_ID",
+        "companyName": "BudgetBoss",
+        "language": "en-US",
+        "appName": "BudgetBoss",
+        "sku": "com.budgetboss.app.ios"
+      },
+      "android": {
+        "serviceAccountKeyPath": "./google-play-service-account.json",
+        "track": "production"
       }
     }
   }

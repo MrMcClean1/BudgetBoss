@@ -249,3 +249,25 @@ export interface GamificationData {
 export async function getGamification(): Promise<GamificationData> {
   return request("GET", "/api/gamification/badges");
 }
+
+// ── Account Deletion ──────────────────────────────────────────────────────────
+
+export interface DeletionPreview {
+  message: string;
+  dataToBeDeleted: {
+    transactions: number;
+    bankAccounts: number;
+    budgets: number;
+    savingsGoals: number;
+    badges: number;
+  };
+  warning: string;
+}
+
+export async function previewAccountDeletion(): Promise<DeletionPreview> {
+  return request("POST", "/api/mobile/delete-account");
+}
+
+export async function deleteAccount(): Promise<{ success: boolean; message: string }> {
+  return request("DELETE", "/api/mobile/delete-account");
+}
