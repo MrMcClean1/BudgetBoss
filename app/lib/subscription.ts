@@ -111,7 +111,7 @@ export function isPaidTier(tier: SubscriptionTier): boolean {
  */
 export function getUpgradeMessage(resource: string, tier: SubscriptionTier): string {
   if (tier === "FREE") {
-    return `Upgrade to Pro to add unlimited ${resource}. Start your free trial today!`;
+    return `Upgrade to Pro to add unlimited ${resource}.`;
   }
   return `You've reached your ${resource} limit.`;
 }

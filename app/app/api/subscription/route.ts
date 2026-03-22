@@ -113,9 +113,7 @@ export async function POST(req: NextRequest) {
       line_items: [{ price: priceId, quantity: 1 }],
       success_url: successUrl || `${process.env.NEXTAUTH_URL}/dashboard?upgraded=true`,
       cancel_url: cancelUrl || `${process.env.NEXTAUTH_URL}/pricing`,
-      subscription_data: {
-        trial_period_days: 7,
-      },
+      subscription_data: {},
     });
 
     return NextResponse.json({ url: checkoutSession.url });

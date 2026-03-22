@@ -46,6 +46,7 @@ export async function DELETE(req: NextRequest) {
     }
 
     // Cancel active Stripe subscription before deleting so user isn't charged after deletion
+    const hadActiveSubscription = !!user.stripeSubscriptionId;
     if (user.stripeSubscriptionId && process.env.STRIPE_SECRET_KEY) {
       try {
         const Stripe = (await import("stripe")).default;
@@ -56,6 +57,16 @@ export async function DELETE(req: NextRequest) {
         // Continue with deletion even if Stripe cancel fails — user still expects account gone
       }
     }
+
+    // Write GDPR audit log before deleting (retained separately for compliance)
+    await prisma.accountDeletionLog.create({
+      data: {
+        userId,
+        email: user.email,
+        hadActiveSubscription,
+        stripeSubscriptionId: user.stripeSubscriptionId ?? null,
+      },
+    });
 
     // Delete the user - all related data will cascade delete via Prisma schema
     await prisma.user.delete({
@@ -96,20 +107,29 @@ export async function POST(req: NextRequest) {
 
     const userId = payload.sub;
 
-    // Get counts of user data for confirmation display
+    // Get counts of user data and subscription info for confirmation display
     const [
       transactionCount,
       accountCount,
       budgetCount,
       goalCount,
       badgeCount,
+      user,
     ] = await Promise.all([
       prisma.transaction.count({ where: { userId } }),
       prisma.bankAccount.count({ where: { userId } }),
       prisma.budget.count({ where: { userId } }),
       prisma.savingsGoal.count({ where: { userId } }),
       prisma.userBadge.count({ where: { userId } }),
+      prisma.user.findUnique({
+        where: { id: userId },
+        select: { tier: true, subscriptionStatus: true, stripeSubscriptionId: true, subscriptionEndsAt: true },
+      }),
     ]);
+
+    const hasActiveSubscription =
+      !!user?.stripeSubscriptionId &&
+      user.subscriptionStatus === "active";
 
     return NextResponse.json({
       message: "Confirm account deletion",
@@ -120,6 +140,14 @@ export async function POST(req: NextRequest) {
         savingsGoals: goalCount,
         badges: badgeCount,
       },
+      subscription: hasActiveSubscription
+        ? {
+            tier: user?.tier,
+            status: user?.subscriptionStatus,
+            endsAt: user?.subscriptionEndsAt,
+            warning: "Your active subscription will be immediately cancelled. You will not receive a refund for the current billing period.",
+          }
+        : null,
       warning: "This action is permanent and cannot be undone. All your financial data will be permanently deleted.",
     });
   } catch (error) {

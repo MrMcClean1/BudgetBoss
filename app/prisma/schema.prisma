@@ -62,7 +62,7 @@ model Subscription {
   id                   String   @id @default(cuid())
   userId               String
   stripeSubscriptionId String   @unique
-  stripePriceId        String
+  stripePriceId        String?
   status               String
   currentPeriodStart   DateTime
   currentPeriodEnd     DateTime
@@ -314,4 +314,17 @@ enum ImportStatus {
   PROCESSING
   COMPLETED
   FAILED
+}
+
+// GDPR compliance: audit trail for account deletions (retained separately from user data)
+model AccountDeletionLog {
+  id                   String    @id @default(cuid())
+  userId               String    // Former user ID (kept for traceability)
+  email                String    // Hashed or redacted after retention period
+  hadActiveSubscription Boolean  @default(false)
+  stripeSubscriptionId String?   // Former subscription ID for Stripe reconciliation
+  deletedAt            DateTime  @default(now())
+
+  @@index([userId])
+  @@index([deletedAt])
 }

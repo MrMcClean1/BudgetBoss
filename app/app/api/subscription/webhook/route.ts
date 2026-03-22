@@ -146,7 +146,7 @@ async function handleSubscriptionUpdate(subscription: {
     create: {
       userId: user.id,
       stripeSubscriptionId: subscription.id,
-      stripePriceId: priceId || "",
+      stripePriceId: priceId ?? null,
       status: subscription.status,
       currentPeriodStart: new Date(subscription.current_period_start * 1000),
       currentPeriodEnd: new Date(subscription.current_period_end * 1000),
@@ -154,7 +154,7 @@ async function handleSubscriptionUpdate(subscription: {
     },
     update: {
       status: subscription.status,
-      stripePriceId: priceId || "",
+      stripePriceId: priceId ?? null,
       currentPeriodStart: new Date(subscription.current_period_start * 1000),
       currentPeriodEnd: new Date(subscription.current_period_end * 1000),
       cancelAtPeriodEnd: subscription.cancel_at_period_end,
