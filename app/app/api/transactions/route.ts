@@ -3,6 +3,7 @@ import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { TransactionType } from "@prisma/client";
 import { z } from "zod";
+import { recalcBalance } from "@/lib/server/balance";
 
 const CreateSchema = z.object({
   date: z.string().min(1),
@@ -127,6 +128,10 @@ export async function POST(request: Request) {
     },
     include: { category: true, bankAccount: true },
   });
+
+  if (transaction.bankAccountId) {
+    await recalcBalance(transaction.bankAccountId);
+  }
 
   return NextResponse.json({
     id: transaction.id,

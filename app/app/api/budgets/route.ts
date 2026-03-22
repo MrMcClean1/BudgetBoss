@@ -92,11 +92,14 @@ export async function GET() {
       });
 
       const spent = Number(spendResult._sum.amount ?? 0);
+      const budgetAmount = Number(b.amount);
+      const remaining = budgetAmount - spent;
+      const percentUsed = budgetAmount > 0 ? (spent / budgetAmount) * 100 : 0;
 
       return {
         id: b.id,
         name: b.name,
-        amount: Number(b.amount),
+        amount: budgetAmount,
         period: b.period,
         categoryId: b.categoryId,
         categoryName: b.category?.name ?? null,
@@ -106,6 +109,8 @@ export async function GET() {
         startDate: b.startDate.toISOString(),
         endDate: b.endDate?.toISOString() ?? null,
         spent,
+        remaining,
+        percentUsed,
         periodStart: start.toISOString(),
         periodEnd: end.toISOString(),
       };

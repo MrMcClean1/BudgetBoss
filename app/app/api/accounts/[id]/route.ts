@@ -3,6 +3,7 @@ import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { BankAccountType } from "@prisma/client";
 import { z } from "zod";
+import { recalcBalance } from "@/lib/server/balance";
 
 const UpdateSchema = z.object({
   name: z.string().min(1).optional(),
@@ -10,27 +11,6 @@ const UpdateSchema = z.object({
   currency: z.string().optional(),
   isActive: z.boolean().optional(),
 });
-
-async function recalcBalance(accountId: string) {
-  const transactions = await prisma.transaction.findMany({
-    where: { bankAccountId: accountId },
-    select: { amount: true, type: true },
-  });
-
-  const balance = transactions.reduce((sum, t) => {
-    const amt = Number(t.amount);
-    if (t.type === "INCOME") return sum + amt;
-    if (t.type === "EXPENSE") return sum - amt;
-    return sum;
-  }, 0);
-
-  await prisma.bankAccount.update({
-    where: { id: accountId },
-    data: { balance },
-  });
-
-  return balance;
-}
 
 export async function PATCH(
   request: Request,

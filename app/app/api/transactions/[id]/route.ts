@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { z } from "zod";
+import { recalcBalance } from "@/lib/server/balance";
 
 const UpdateSchema = z.object({
   date: z.string().min(1).optional(),
@@ -59,6 +60,13 @@ export async function PATCH(
     include: { category: true, bankAccount: true },
   });
 
+  if (transaction.bankAccountId) {
+    await recalcBalance(transaction.bankAccountId);
+  }
+  if (existing.bankAccountId && existing.bankAccountId !== transaction.bankAccountId) {
+    await recalcBalance(existing.bankAccountId);
+  }
+
   return NextResponse.json({
     id: transaction.id,
     date: transaction.date.toISOString(),
@@ -93,6 +101,10 @@ export async function DELETE(
   }
 
   await prisma.transaction.delete({ where: { id } });
+
+  if (existing.bankAccountId) {
+    await recalcBalance(existing.bankAccountId);
+  }
 
   return NextResponse.json({ success: true });
 }
