@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { canCreateSavingsGoal } from "@/lib/server/feature-gates";
 import { z } from "zod";
 
 const CreateSchema = z.object({
@@ -59,6 +60,14 @@ export async function POST(request: Request) {
   }
 
   const { name, targetAmount, currentAmount, targetDate, icon, color } = parsed.data;
+
+  const featureCheck = await canCreateSavingsGoal(userId);
+  if (!featureCheck.allowed) {
+    return NextResponse.json(
+      { error: featureCheck.reason, upgradeRequired: featureCheck.upgradeRequired },
+      { status: 403 }
+    );
+  }
 
   const goal = await prisma.savingsGoal.create({
     data: {

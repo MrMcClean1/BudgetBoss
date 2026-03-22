@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { canCreateBudget } from "@/lib/server/feature-gates";
 import { z } from "zod";
 
 const CreateSchema = z.object({
@@ -8,8 +9,8 @@ const CreateSchema = z.object({
   amount: z.number().positive(),
   period: z.enum(["WEEKLY", "MONTHLY", "QUARTERLY", "YEARLY"]),
   categoryId: z.string().nullable().optional(),
-  startDate: z.string().min(1),
-  endDate: z.string().nullable().optional(),
+  startDate: z.string().refine((s) => !isNaN(new Date(s).getTime()), { message: "Invalid startDate" }),
+  endDate: z.string().refine((s) => !isNaN(new Date(s).getTime()), { message: "Invalid endDate" }).nullable().optional(),
 });
 
 function getPeriodRange(period: string, startDate: Date): { start: Date; end: Date } {
@@ -137,6 +138,14 @@ export async function POST(request: Request) {
   }
 
   const { name, amount, period, categoryId, startDate, endDate } = parsed.data;
+
+  const featureCheck = await canCreateBudget(userId);
+  if (!featureCheck.allowed) {
+    return NextResponse.json(
+      { error: featureCheck.reason, upgradeRequired: featureCheck.upgradeRequired },
+      { status: 403 }
+    );
+  }
 
   const budget = await prisma.budget.create({
     data: {

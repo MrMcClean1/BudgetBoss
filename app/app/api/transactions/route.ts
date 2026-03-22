@@ -42,8 +42,8 @@ export async function GET(request: Request) {
     ...((dateFrom || dateTo)
       ? {
           date: {
-            ...(dateFrom ? { gte: new Date(dateFrom) } : {}),
-            ...(dateTo ? { lte: new Date(dateTo + "T23:59:59.999Z") } : {}),
+            ...(dateFrom && !isNaN(new Date(dateFrom).getTime()) ? { gte: new Date(dateFrom) } : {}),
+            ...(dateTo && !isNaN(new Date(dateTo).getTime()) ? { lte: new Date(dateTo + "T23:59:59.999Z") } : {}),
           },
         }
       : {}),

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { canCreateBankAccount } from "@/lib/server/feature-gates";
 import { BankAccountType } from "@prisma/client";
 import { z } from "zod";
 
@@ -59,6 +60,14 @@ export async function POST(request: Request) {
   }
 
   const { name, type, currency } = parsed.data;
+
+  const featureCheck = await canCreateBankAccount(userId);
+  if (!featureCheck.allowed) {
+    return NextResponse.json(
+      { error: featureCheck.reason, upgradeRequired: featureCheck.upgradeRequired },
+      { status: 403 }
+    );
+  }
 
   const account = await prisma.bankAccount.create({
     data: {
