@@ -4,7 +4,6 @@ import { StatusBar } from "expo-status-bar";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { AuthProvider, useAuth } from "@/lib/auth";
 import { useColorScheme } from "@/hooks/useColorScheme";
-import { Colors } from "@/constants/colors";
 
 function RootNavigator() {
   const { token, isLoading, onboardingComplete } = useAuth();
@@ -28,7 +27,7 @@ function RootNavigator() {
       // Signed in and onboarding done — go to main app
       if (!inTabs) router.replace("/(tabs)");
     }
-  }, [token, isLoading, onboardingComplete, segments]);
+  }, [token, isLoading, onboardingComplete, segments, router]);
 
   return (
     <Stack screenOptions={{ headerShown: false }}>

@@ -233,7 +233,7 @@ export async function unregisterPushToken(token: string): Promise<void> {
 
 export interface GamificationData {
   user: { xp: number; level: number; streakDays: number };
-  badges: Array<{
+  badges: {
     id: string;
     key: string;
     name: string;
@@ -243,7 +243,7 @@ export interface GamificationData {
     xpReward: number;
     earned: boolean;
     earnedAt: string | null;
-  }>;
+  }[];
 }
 
 export async function getGamification(): Promise<GamificationData> {

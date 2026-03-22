@@ -51,7 +51,7 @@ function TransactionRow({ tx, scheme }: { tx: Transaction; scheme: "light" | "da
         <Text style={[styles.txMeta, { color: c.subtext }]}>
           {formatDate(tx.date)}{tx.categoryName ? ` · ${tx.categoryName}` : ""}
         </Text>
-      </View>
+</View>
       <Text style={[styles.txAmount, { color: amountColor }]}>
         {isIncome ? "+" : "-"}{formatCurrency(Math.abs(tx.amount))}
       </Text>
@@ -123,6 +123,7 @@ export default function DashboardScreen() {
 
   useEffect(() => {
     loadData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onRefresh = () => {
@@ -204,7 +205,7 @@ export default function DashboardScreen() {
         )}
 
         {/* Recent Transactions */}
-        <Card style={styles.section}>
+<Card style={styles.section}>
           <ThemedText variant="subtitle" style={styles.sectionTitle}>Recent Transactions</ThemedText>
           {recentTx.length === 0 ? (
             <ThemedText dim style={{ textAlign: "center", paddingVertical: 16 }}>

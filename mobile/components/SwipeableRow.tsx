@@ -1,7 +1,6 @@
 import { useRef } from "react";
-import { Animated, TouchableOpacity, StyleSheet, Text, View } from "react-native";
+import { Animated, TouchableOpacity, StyleSheet, Text } from "react-native";
 import Swipeable from "react-native-gesture-handler/Swipeable";
-import { Colors } from "@/constants/colors";
 
 interface Action {
   label: string;

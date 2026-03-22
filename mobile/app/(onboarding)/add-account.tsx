@@ -17,7 +17,7 @@ import { Colors } from "@/constants/colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { createAccount, BankAccount } from "@/lib/api";
 
-const ACCOUNT_TYPES: Array<{ value: BankAccount["type"]; label: string; emoji: string }> = [
+const ACCOUNT_TYPES: { value: BankAccount["type"]; label: string; emoji: string }[] = [
   { value: "CHECKING", label: "Checking", emoji: "🏦" },
   { value: "SAVINGS", label: "Savings", emoji: "💰" },
   { value: "CREDIT_CARD", label: "Credit Card", emoji: "💳" },
