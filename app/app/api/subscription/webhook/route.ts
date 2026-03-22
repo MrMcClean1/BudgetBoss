@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { STRIPE_PRICE_IDS } from "@/lib/subscription";
 
 /**
  * POST /api/subscription/webhook
  * Handle Stripe webhook events for subscription updates
- * 
+ *
  * Required Stripe events to configure:
  * - customer.subscription.created
  * - customer.subscription.updated
@@ -13,36 +14,56 @@ import { prisma } from "@/lib/prisma";
  * - invoice.payment_failed
  */
 export async function POST(req: NextRequest) {
+  let body: string;
   try {
-    const body = await req.text();
-    const signature = req.headers.get("stripe-signature");
+    body = await req.text();
+  } catch {
+    return NextResponse.json({ error: "Failed to read request body" }, { status: 400 });
+  }
 
-    if (!signature) {
-      return NextResponse.json({ error: "No signature" }, { status: 400 });
+  const signature = req.headers.get("stripe-signature");
+
+  if (!signature) {
+    return NextResponse.json({ error: "No signature" }, { status: 400 });
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let event: { type: string; data: { object: any } };
+
+  if (process.env.STRIPE_SECRET_KEY && process.env.STRIPE_WEBHOOK_SECRET) {
+    // Production: verify webhook signature to prevent spoofed events
+    try {
+      const Stripe = (await import("stripe")).default;
+      const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+      event = stripe.webhooks.constructEvent(
+        body,
+        signature,
+        process.env.STRIPE_WEBHOOK_SECRET
+      );
+    } catch (err) {
+      console.error("Webhook signature verification failed:", err);
+      return NextResponse.json({ error: "Invalid signature" }, { status: 400 });
     }
+  } else {
+    // Development fallback: no Stripe keys configured
+    console.warn("STRIPE_WEBHOOK_SECRET not set — skipping signature verification (dev mode only)");
+    try {
+      event = JSON.parse(body);
+    } catch {
+      return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
+    }
+  }
 
-    // In production, verify the webhook signature:
-    // const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-    // const event = stripe.webhooks.constructEvent(
-    //   body,
-    //   signature,
-    //   process.env.STRIPE_WEBHOOK_SECRET!
-    // );
-
-    // For now, parse the body as JSON (development mode)
-    const event = JSON.parse(body);
-
+  try {
     switch (event.type) {
       case "customer.subscription.created":
       case "customer.subscription.updated": {
-        const subscription = event.data.object;
-        await handleSubscriptionUpdate(subscription);
+        await handleSubscriptionUpdate(event.data.object);
         break;
       }
 
       case "customer.subscription.deleted": {
-        const subscription = event.data.object;
-        await handleSubscriptionCanceled(subscription);
+        await handleSubscriptionCanceled(event.data.object);
         break;
       }
 
@@ -55,8 +76,7 @@ export async function POST(req: NextRequest) {
       }
 
       case "invoice.payment_failed": {
-        const invoice = event.data.object;
-        await handlePaymentFailed(invoice);
+        await handlePaymentFailed(event.data.object);
         break;
       }
 
@@ -85,11 +105,17 @@ async function handleSubscriptionUpdate(subscription: {
 }) {
   const priceId = subscription.items.data[0]?.price.id;
 
-  // Determine tier from price ID
+  // Determine tier from price ID using exact match against configured price IDs
   let tier: "FREE" | "PRO" | "FAMILY" = "FREE";
-  if (priceId?.includes("pro")) {
+  if (
+    priceId === STRIPE_PRICE_IDS.PRO_MONTHLY ||
+    priceId === STRIPE_PRICE_IDS.PRO_YEARLY
+  ) {
     tier = "PRO";
-  } else if (priceId?.includes("family")) {
+  } else if (
+    priceId === STRIPE_PRICE_IDS.FAMILY_MONTHLY ||
+    priceId === STRIPE_PRICE_IDS.FAMILY_YEARLY
+  ) {
     tier = "FAMILY";
   }
 
@@ -122,7 +148,7 @@ async function handleSubscriptionUpdate(subscription: {
       stripeSubscriptionId: subscription.id,
       stripePriceId: priceId || "",
       status: subscription.status,
-      currentPeriodStart: newDate(subscription.current_period_start * 1000),
+      currentPeriodStart: new Date(subscription.current_period_start * 1000),
       currentPeriodEnd: new Date(subscription.current_period_end * 1000),
       cancelAtPeriodEnd: subscription.cancel_at_period_end,
     },

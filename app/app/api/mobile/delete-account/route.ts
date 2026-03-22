@@ -35,14 +35,26 @@ export async function DELETE(req: NextRequest) {
 
     const userId = payload.sub;
 
-    // Verify user exists
+    // Verify user exists and get Stripe info for subscription cleanup
     const user = await prisma.user.findUnique({
       where: { id: userId },
-      select: { id: true, email: true },
+      select: { id: true, email: true, stripeSubscriptionId: true },
     });
 
     if (!user) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
+
+    // Cancel active Stripe subscription before deleting so user isn't charged after deletion
+    if (user.stripeSubscriptionId && process.env.STRIPE_SECRET_KEY) {
+      try {
+        const Stripe = (await import("stripe")).default;
+        const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+        await stripe.subscriptions.cancel(user.stripeSubscriptionId);
+      } catch (stripeError) {
+        console.error("Failed to cancel Stripe subscription during account deletion:", stripeError);
+        // Continue with deletion even if Stripe cancel fails — user still expects account gone
+      }
     }
 
     // Delete the user - all related data will cascade delete via Prisma schema

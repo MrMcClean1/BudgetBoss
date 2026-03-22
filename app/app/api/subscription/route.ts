@@ -78,29 +78,26 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Price ID required" }, { status: 400 });
     }
 
-    // For now, return a placeholder response
-    // In production, this would create a Stripe checkout session
-    const checkoutUrl = `/checkout?price=${priceId}`;
+    if (!process.env.STRIPE_SECRET_KEY) {
+      return NextResponse.json(
+        { error: "Payment processing is not configured." },
+        { status: 503 }
+      );
+    }
 
-    return NextResponse.json({
-      url: checkoutUrl,
-      message: "Stripe integration required. Set STRIPE_SECRET_KEY to enable payments.",
-    });
+    const Stripe = (await import("stripe")).default;
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-    /* 
-    // Production Stripe implementation:
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-    
     const user = await prisma.user.findUnique({
       where: { id: session.user.id },
       select: { email: true, stripeCustomerId: true },
     });
 
     let customerId = user?.stripeCustomerId;
-    
+
     if (!customerId) {
       const customer = await stripe.customers.create({
-        email: user?.email,
+        email: user?.email ?? undefined,
         metadata: { userId: session.user.id },
       });
       customerId = customer.id;
@@ -122,7 +119,6 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json({ url: checkoutSession.url });
-    */
   } catch (error) {
     console.error("Checkout error:", error);
     return NextResponse.json(
