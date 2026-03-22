@@ -8,8 +8,8 @@ const UpdateSchema = z.object({
   amount: z.number().positive().optional(),
   period: z.enum(["WEEKLY", "MONTHLY", "QUARTERLY", "YEARLY"]).optional(),
   categoryId: z.string().nullable().optional(),
-  startDate: z.string().min(1).optional(),
-  endDate: z.string().nullable().optional(),
+  startDate: z.string().refine((s) => !isNaN(new Date(s).getTime()), { message: "Invalid startDate" }).optional(),
+  endDate: z.string().refine((s) => !isNaN(new Date(s).getTime()), { message: "Invalid endDate" }).nullable().optional(),
   isActive: z.boolean().optional(),
 });
 

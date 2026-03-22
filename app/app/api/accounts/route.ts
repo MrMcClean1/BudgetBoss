@@ -26,18 +26,20 @@ export async function GET() {
     orderBy: { createdAt: "asc" },
   });
 
-  return NextResponse.json({
-    accounts: accounts.map((a) => ({
-      id: a.id,
-      name: a.name,
-      type: a.type,
-      balance: Number(a.balance),
-      currency: a.currency,
-      isActive: a.isActive,
-      transactionCount: a._count.transactions,
-      createdAt: a.createdAt.toISOString(),
-    })),
-  });
+  const mapped = accounts.map((a) => ({
+    id: a.id,
+    name: a.name,
+    type: a.type,
+    balance: Number(a.balance),
+    currency: a.currency,
+    isActive: a.isActive,
+    transactionCount: a._count.transactions,
+    createdAt: a.createdAt.toISOString(),
+  }));
+
+  const totalBalance = mapped.reduce((sum, a) => sum + a.balance, 0);
+
+  return NextResponse.json({ accounts: mapped, totalBalance });
 }
 
 export async function POST(request: Request) {

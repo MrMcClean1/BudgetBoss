@@ -56,15 +56,18 @@ export async function PATCH(
     },
   });
 
+  const target = Number(updated.targetAmount);
+  const current = Number(updated.currentAmount);
   return NextResponse.json({
     id: updated.id,
     name: updated.name,
-    targetAmount: Number(updated.targetAmount),
-    currentAmount: Number(updated.currentAmount),
+    targetAmount: target,
+    currentAmount: current,
     targetDate: updated.targetDate?.toISOString() ?? null,
     icon: updated.icon,
     color: updated.color,
     isCompleted: updated.isCompleted,
+    percentComplete: target > 0 ? Math.min((current / target) * 100, 100) : 0,
     createdAt: updated.createdAt.toISOString(),
   });
 }

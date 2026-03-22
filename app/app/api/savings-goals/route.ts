@@ -26,17 +26,22 @@ export async function GET() {
   });
 
   return NextResponse.json(
-    goals.map((g) => ({
-      id: g.id,
-      name: g.name,
-      targetAmount: Number(g.targetAmount),
-      currentAmount: Number(g.currentAmount),
-      targetDate: g.targetDate?.toISOString() ?? null,
-      icon: g.icon,
-      color: g.color,
-      isCompleted: g.isCompleted,
-      createdAt: g.createdAt.toISOString(),
-    }))
+    goals.map((g) => {
+      const target = Number(g.targetAmount);
+      const current = Number(g.currentAmount);
+      return {
+        id: g.id,
+        name: g.name,
+        targetAmount: target,
+        currentAmount: current,
+        targetDate: g.targetDate?.toISOString() ?? null,
+        icon: g.icon,
+        color: g.color,
+        isCompleted: g.isCompleted,
+        percentComplete: target > 0 ? Math.min((current / target) * 100, 100) : 0,
+        createdAt: g.createdAt.toISOString(),
+      };
+    })
   );
 }
 
@@ -81,16 +86,19 @@ export async function POST(request: Request) {
     },
   });
 
+  const target = Number(goal.targetAmount);
+  const current = Number(goal.currentAmount);
   return NextResponse.json(
     {
       id: goal.id,
       name: goal.name,
-      targetAmount: Number(goal.targetAmount),
-      currentAmount: Number(goal.currentAmount),
+      targetAmount: target,
+      currentAmount: current,
       targetDate: goal.targetDate?.toISOString() ?? null,
       icon: goal.icon,
       color: goal.color,
       isCompleted: goal.isCompleted,
+      percentComplete: target > 0 ? Math.min((current / target) * 100, 100) : 0,
       createdAt: goal.createdAt.toISOString(),
     },
     { status: 201 }

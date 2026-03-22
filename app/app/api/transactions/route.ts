@@ -70,7 +70,7 @@ export async function GET(request: Request) {
   ]);
 
   return NextResponse.json({
-    transactions: transactions.map((t) => ({
+    data: transactions.map((t) => ({
       id: t.id,
       date: t.date.toISOString(),
       description: t.description,
@@ -85,10 +85,7 @@ export async function GET(request: Request) {
       bankAccountId: t.bankAccountId,
       bankAccountName: t.bankAccount?.name ?? null,
     })),
-    total,
-    page,
-    limit,
-    totalPages: Math.ceil(total / limit),
+    meta: { page, limit, total, totalPages: Math.ceil(total / limit) },
     categories: categories.map((c) => ({ id: c.id, name: c.name, icon: c.icon, color: c.color })),
     bankAccounts: bankAccounts.map((a) => ({ id: a.id, name: a.name, type: a.type })),
   });
