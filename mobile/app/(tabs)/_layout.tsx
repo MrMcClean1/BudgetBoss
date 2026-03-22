@@ -61,6 +61,13 @@ export default function TabsLayout() {
         }}
       />
       <Tabs.Screen
+        name="upgrade"
+        options={{
+          title: "Pro",
+          tabBarIcon: ({ focused }) => <TabIcon emoji="💎" focused={focused} />,
+        }}
+      />
+      <Tabs.Screen
         name="settings"
         options={{
           title: "Settings",

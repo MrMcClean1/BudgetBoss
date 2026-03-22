@@ -271,3 +271,40 @@ export async function previewAccountDeletion(): Promise<DeletionPreview> {
 export async function deleteAccount(): Promise<{ success: boolean; message: string }> {
   return request("DELETE", "/api/mobile/delete-account");
 }
+
+// ── Subscription ──────────────────────────────────────────────────────────────
+
+export interface SubscriptionStatus {
+  tier: "FREE" | "PRO" | "FAMILY";
+  status: string | null;
+  endsAt: string | null;
+  trialEndsAt: string | null;
+  isPro: boolean;
+  limits: {
+    maxBankAccounts: number;
+    maxBudgets: number;
+    maxSavingsGoals: number;
+    csvImport: boolean;
+    advancedReports: boolean;
+    prioritySupport: boolean;
+    familyMembers: number;
+    allBadges: boolean;
+  };
+  usage: {
+    bankAccounts: number;
+    budgets: number;
+    savingsGoals: number;
+  };
+  prices: {
+    PRO: { monthly: number; yearly: number };
+    FAMILY: { monthly: number; yearly: number };
+  };
+}
+
+export async function getSubscriptionStatus(): Promise<SubscriptionStatus> {
+  return request("GET", "/api/subscription");
+}
+
+export async function createCheckoutSession(priceId: string): Promise<{ url: string }> {
+  return request("POST", "/api/subscription", { priceId });
+}

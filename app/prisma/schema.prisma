@@ -23,22 +23,56 @@ model User {
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
+  // Subscription
+  tier                 SubscriptionTier @default(FREE)
+  stripeCustomerId     String?
+  stripeSubscriptionId String?
+  subscriptionStatus   String?          @default("none")
+  subscriptionEndsAt   DateTime?
+  trialEndsAt          DateTime?
+
   // Gamification
   xp             Int       @default(0)
   level          Int       @default(1)
   streakDays     Int       @default(0)
   lastActivityAt DateTime?
 
-  accounts     Account[]
-  sessions     Session[]
-  bankAccounts BankAccount[]
-  transactions Transaction[]
-  categories   Category[]
-  budgets      Budget[]
-  savingsGoals SavingsGoal[]
-  badges       UserBadge[]
-  csvImports   CsvImport[]
-  pushTokens   PushToken[]
+  accounts      Account[]
+  sessions      Session[]
+  bankAccounts  BankAccount[]
+  transactions  Transaction[]
+  categories    Category[]
+  budgets       Budget[]
+  savingsGoals  SavingsGoal[]
+  badges        UserBadge[]
+  csvImports    CsvImport[]
+  pushTokens    PushToken[]
+  subscriptions Subscription[]
+
+  @@index([stripeCustomerId])
+}
+
+enum SubscriptionTier {
+  FREE
+  PRO
+  FAMILY
+}
+
+model Subscription {
+  id                   String   @id @default(cuid())
+  userId               String
+  stripeSubscriptionId String   @unique
+  stripePriceId        String
+  status               String
+  currentPeriodStart   DateTime
+  currentPeriodEnd     DateTime
+  cancelAtPeriodEnd    Boolean  @default(false)
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
 }
 
 model Account {
