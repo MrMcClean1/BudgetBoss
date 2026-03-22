@@ -399,42 +399,23 @@ export default function DashboardClient(props: DashboardProps) {
           {/* Right column */}
           <div className="space-y-6">
 
-            {/* CSV Import */}
+            {/* Import */}
             <div className="bg-white rounded-2xl border border-gray-200 p-5">
               <h2 className="font-semibold text-gray-900 mb-3">Import Transactions</h2>
               <p className="text-xs text-gray-500 mb-3">
-                Upload a CSV from Rocket Money or your bank.
+                Upload bank statements in CSV, OFX/QFX, or JSON format.
               </p>
-              <label className="block">
-                <input
-                  ref={fileRef}
-                  type="file"
-                  accept=".csv"
-                  className="hidden"
-                  onChange={handleImport}
-                />
-                <button
-                  onClick={() => fileRef.current?.click()}
-                  disabled={importing}
-                  className="w-full border-2 border-dashed border-gray-300 hover:border-green-400 text-gray-500 hover:text-green-600 rounded-xl py-3 text-sm font-medium transition-colors disabled:opacity-50"
-                >
-                  {importing ? "⏳ Importing..." : "📂 Choose CSV file"}
-                </button>
-              </label>
-              {importResult && (
-                <div className="mt-3 bg-green-50 border border-green-200 rounded-lg p-3 text-sm">
-                  <p className="font-medium text-green-700">✅ Import complete</p>
-                  <p className="text-green-600">{importResult.rowsImported} transactions imported</p>
-                  {importResult.rowsErrored > 0 && (
-                    <p className="text-yellow-600">{importResult.rowsErrored} rows had errors</p>
-                  )}
-                </div>
-              )}
-              {importError && (
-                <div className="mt-3 bg-red-50 border border-red-200 rounded-lg p-3 text-sm text-red-600">
-                  ❌ {importError}
-                </div>
-              )}
+              <a
+                href="/import"
+                className="flex items-center justify-center gap-2 w-full border-2 border-dashed border-gray-300 hover:border-green-400 text-gray-500 hover:text-green-600 rounded-xl py-3 text-sm font-medium transition-colors"
+              >
+                📂 Import transactions
+              </a>
+              <div className="mt-3 flex gap-1.5 flex-wrap">
+                {["CSV", "OFX", "QFX", "JSON"].map((f) => (
+                  <span key={f} className="text-xs bg-gray-100 text-gray-500 rounded px-1.5 py-0.5">{f}</span>
+                ))}
+              </div>
               {recentImports.length > 0 && (
                 <div className="mt-4 space-y-2">
                   <p className="text-xs font-medium text-gray-500 uppercase tracking-wide">Recent Imports</p>

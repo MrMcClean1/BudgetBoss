@@ -6,7 +6,7 @@
 
 ## What It Does
 
-- **CSV Import** — Paste in exports from Rocket Money, Chase, Bank of America, or any bank. BudgetBoss auto-detects column layouts (Amount, Debit/Credit, Date, Description, Category).
+- **Multi-format Import** — Upload bank statements in CSV, OFX/QFX, or JSON format. BudgetBoss auto-detects column layouts and shows a preview before committing. Works from both the web app and mobile app.
 - **Transaction Tracking** — Search, filter, edit, and categorize every transaction. Sort by date, category, amount, or account.
 - **Budgets** — Set weekly, monthly, quarterly, or yearly spending limits per category. See real-time progress bars showing budget vs. actual spend.
 - **Savings Goals** — Name a target (e.g. "Emergency Fund — $5,000"), set a deadline, and watch a progress bar fill as you save.
@@ -138,7 +138,8 @@ All routes require authentication (NextAuth session cookie for web, JWT bearer t
 | POST | `/api/auth/register` | Create account |
 | GET/POST | `/api/transactions` | List (paginated, filterable) or create transactions |
 | PATCH/DELETE | `/api/transactions/[id]` | Update or delete a transaction |
-| POST | `/api/transactions/import` | Import CSV file |
+| POST | `/api/transactions/import` | Import CSV, OFX/QFX, or JSON file |
+| POST | `/api/transactions/import/preview` | Preview an import file without saving |
 | GET/POST | `/api/budgets` | List budgets with current spend, or create |
 | PATCH/DELETE | `/api/budgets/[id]` | Update or delete a budget |
 | GET/POST | `/api/savings-goals` | List or create savings goals |
@@ -167,9 +168,13 @@ All routes require authentication (NextAuth session cookie for web, JWT bearer t
 
 ---
 
-## CSV Import Format
+## Import Formats
 
-BudgetBoss auto-detects columns. Supported layouts:
+BudgetBoss supports three import formats accessible from the **Import** page (web) or the Settings screen (mobile). A preview step shows the first 10 transactions before any data is saved.
+
+### CSV
+
+Auto-detects columns from standard bank exports:
 
 | Column | Required | Notes |
 |---|---|---|
@@ -179,9 +184,21 @@ BudgetBoss auto-detects columns. Supported layouts:
 | Debit + Credit | Yes* | Two-column alternative |
 | Category | No | Enables auto-categorization |
 
-*Provide either Amount OR Debit+Credit columns.
+*Provide either Amount OR Debit+Credit columns. Compatible with: Rocket Money, Chase, Bank of America, and most standard bank CSV formats.
 
-Compatible with exports from: Rocket Money, Chase, Bank of America, and most standard bank CSV formats.
+### OFX / QFX
+
+Open Financial Exchange format exported from Quicken, most major US banks, and financial software. Both SGML-style (OFX 1.x) and XML-style (OFX 2.x) are supported. Simply export from your bank and upload.
+
+### JSON
+
+Accepts two shapes:
+- **BudgetBoss export format** — an object with a `transactions` array (from the GDPR data export)
+- **Plain array** — a JSON array of objects with `date`, `description`/`memo`/`payee`, and `amount` fields
+
+### File size limit
+
+All formats: **10 MB maximum** per upload.
 
 ---
 

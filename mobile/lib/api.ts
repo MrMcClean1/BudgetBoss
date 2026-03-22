@@ -308,3 +308,45 @@ export async function getSubscriptionStatus(): Promise<SubscriptionStatus> {
 export async function createCheckoutSession(priceId: string): Promise<{ url: string }> {
   return request("POST", "/api/subscription", { priceId });
 }
+
+// ── Transaction import ─────────────────────────────────────────────────────────
+
+export interface ImportResult {
+  importId: string;
+  format: string;
+  rowsTotal: number;
+  rowsImported: number;
+  rowsErrored: number;
+  errors: { row: number; error: string }[];
+}
+
+export async function importTransactionsFile(
+  uri: string,
+  fileName: string,
+  mimeType: string,
+): Promise<ImportResult> {
+  const token = await getToken();
+
+  const formData = new FormData();
+  formData.append("file", {
+    uri,
+    name: fileName,
+    type: mimeType || "application/octet-stream",
+  } as unknown as Blob);
+
+  const res = await fetch(`${API_URL}/api/transactions/import`, {
+    method: "POST",
+    headers: {
+      Authorization: token ? `Bearer ${token}` : "",
+      // Do NOT set Content-Type — fetch sets it with the correct boundary for multipart
+    },
+    body: formData,
+  });
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ error: res.statusText }));
+    throw new ApiError(res.status, err?.error ?? "Import failed");
+  }
+
+  return res.json() as Promise<ImportResult>;
+}
